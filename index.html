@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de dominação mundial</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Canvas para a animação das baforadas de dragão -->
+    <canvas id="breath-canvas"></canvas>
+
+    <header>
+        <div class="dragon-emblem">🐉</div>
+        <h1>Plano de dominação mundial</h1>
+        <p class="subtitle">Crônicas da Ascensão Dracônica</p>
+        
+        <div class="breath-controls">
+            <span>Escolher Baforada do Dragão:</span>
+            <button onclick="setBreath('fire')" class="btn-breath active" id="btn-fire">🔥 Fogo</button>
+            <button onclick="setBreath('lightning')" class="btn-breath" id="btn-lightning">⚡ Relâmpago</button>
+            <button onclick="setBreath('acid')" class="btn-breath" id="btn-acid">🧪 Ácido</button>
+            <button onclick="setBreath('arcane')" class="btn-breath" id="btn-arcane">🔮 Arcano</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sessão 1 -->
+        <section class="card" id="fase-1">
+            <div class="card-header">
+                <span class="badge">Ato I • O Despertar</span>
+                <h2>Formatura & Engenharia Biomecânica</h2>
+            </div>
+            <p>
+                A primeira etapa da conquista começa com a conclusão do Ensino Médio. Armado com conhecimento e ambição, ingresso na faculdade de <strong>Biomecânica</strong>. 
+                Aqui, o objetivo é dominar os segredos da anatomia e da robótica, forjando as bases tecnológicas que permitirão aprimorar o corpo humano além dos limites mortais.
+            </p>
+        </section>
+
+        <!-- Sessão 2 -->
+        <section class="card" id="fase-2">
+            <div class="card-header">
+                <span class="badge">Ato II • Daqui a 10 Anos</span>
+                <h2>O Império das Próteses & Wizards of the Coast</h2>
+            </div>
+            <p>
+                Com a minha própria gigante da tecnologia, revoluciono o mundo fabricando <strong>próteses biomecânicas</strong> de última geração — dignas de um verdadeiro dragão cibernético. 
+                Com os lucros astronômicos desse império, executo o movimento mestre: <strong>compro a Wizards of the Coast</strong>. Agora, o destino de Dungeons & Dragons e de todos os reinos está literalmente nas minhas mãos.
+            </p>
+        </section>
+
+        <!-- Sessão 3 -->
+        <section class="card" id="fase-3">
+            <div class="card-header">
+                <span class="badge">Ato III • Daqui a 15 Anos</span>
+                <h2>Fama Mundial & A Guilda dos 50 Filhos</h2>
+            </div>
+            <p>
+                No auge da fama mundial e reconhecido como o maior magnata e mestre da história, alcanço a glória definitiva: bem casado e liderando uma família lendária com <strong>50 filhos</strong>. 
+                Não precisarei mais procurar jogadores na internet — terei a maior mesa de RPG do planeta dentro da minha própria fortaleza, pronta para campanhas épicas todos os dias!
+            </p>
+        </section>
+
+        <!-- Área Interativa do D20 -->
+        <section class="d20-zone">
+            <h3>Teste de Destino (Role o D20)</h3>
+            <p>Clique no dado para testar a sorte do seu plano de dominação:</p>
+            <div class="d20-container" id="d20-box" onclick="rollD20()">
+                <div class="d20-shape" id="d20-shape">
+                    <span id="d20-number">20</span>
+                </div>
+            </div>
+            <p id="d20-result-text">Acerto Crítico! O mundo já é seu.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Império Dracônico • Todos os direitos e reinos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

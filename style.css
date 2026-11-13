@@ -1,0 +1,240 @@
+:root {
+    --bg-black: #0a080d;
+    --card-black: #130f1a;
+    --purple-dark: #2e0854;
+    --purple-neon: #8a2be2;
+    --gold-yellow: #ffd700;
+    --gold-hover: #ffea70;
+    --text-light: #f0e6ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: var(--text-light);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Canvas de fundo para as partículas */
+#breath-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+header {
+    text-align: center;
+    padding: 4rem 1.5rem 2rem;
+    background: radial-gradient(circle at top, rgba(138, 43, 226, 0.25), transparent 70%);
+    border-bottom: 2px solid var(--purple-neon);
+}
+
+.dragon-emblem {
+    font-size: 3.5rem;
+    filter: drop-shadow(0 0 15px var(--gold-yellow));
+    margin-bottom: 0.5rem;
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    color: var(--gold-yellow);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 2px 2px 0px var(--purple-dark);
+}
+
+.subtitle {
+    color: #c8a2ff;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    letter-spacing: 1px;
+}
+
+/* Controles das Baforadas */
+.breath-controls {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.breath-controls span {
+    color: var(--gold-yellow);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.btn-breath {
+    background-color: var(--card-black);
+    color: var(--text-light);
+    border: 1px solid var(--purple-neon);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-breath:hover, .btn-breath.active {
+    background-color: var(--purple-neon);
+    color: var(--gold-yellow);
+    border-color: var(--gold-yellow);
+    box-shadow: 0 0 12px var(--purple-neon);
+}
+
+/* Conteúdo Principal e Sessões */
+main {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.card {
+    background: linear-gradient(145deg, var(--card-black), #1a1126);
+    border: 2px solid var(--purple-neon);
+    border-left: 6px solid var(--gold-yellow);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(138, 43, 226, 0.3);
+}
+
+.badge {
+    display: inline-block;
+    background-color: var(--purple-dark);
+    color: var(--gold-yellow);
+    border: 1px solid var(--gold-yellow);
+    padding: 0.25rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+}
+
+.card h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-yellow);
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+}
+
+.card p strong {
+    color: var(--gold-yellow);
+}
+
+/* Seção do Dado D20 */
+.d20-zone {
+    text-align: center;
+    background-color: var(--card-black);
+    border: 2px dashed var(--gold-yellow);
+    border-radius: 12px;
+    padding: 2.5rem 1.5rem;
+}
+
+.d20-zone h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-yellow);
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.d20-container {
+    margin: 2rem auto;
+    width: 120px;
+    height: 135px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+/* Forma hexagonal simulando um D20 */
+.d20-shape {
+    width: 110px;
+    height: 125px;
+    background: linear-gradient(135deg, var(--purple-neon), var(--purple-dark));
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.d20-shape::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: var(--bg-black);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: 1;
+}
+
+.d20-shape::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    background: radial-gradient(circle, var(--purple-dark), var(--bg-black));
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: 2;
+}
+
+#d20-number {
+    position: relative;
+    z-index: 3;
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--gold-yellow);
+    text-shadow: 0 0 10px var(--gold-yellow);
+}
+
+.rolling {
+    animation: spinD20 0.6s ease-out;
+}
+
+@keyframes spinD20 {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(360deg) scale(1.25); }
+    100% { transform: rotate(720deg) scale(1); }
+}
+
+#d20-result-text {
+    font-weight: 600;
+    color: var(--gold-yellow);
+    font-size: 1.1rem;
+    min-height: 1.6em;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--purple-dark);
+    color: #8875a3;
+    font-size: 0.9rem;
+}
